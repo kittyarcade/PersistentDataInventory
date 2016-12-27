@@ -22,12 +22,22 @@ app.get('/', function(req, res){
 //add new item to inventory
 app.post('/addItem', urlEncodedParser, function(req, res){
   console.log('addItem route hit: ', req.body);
+  pg.connect(connectionString, function(err, client, done){
+    if(err){
+      console.log(err);
+    } else {
+      console.log('connected to DB: ', req.body);
+      client.query('INSERT INTO items(name, color, size) values($1, $2, $3)', [req.body.name, req.body.color, req.body.size]);
+      done();
+      res.send('post sent');
+    }
+  });
 }); //end add new item to the inventory
 
-//get all objects in the inventory
-app.get('/getInventory', function(req, res){
-  console.log('getInventory route hit');
-}); //end get all objects in the inventory
+// //get all objects in the inventory
+// app.get('/getInventory', function(req, res){
+//   console.log('getInventory route hit');
+// }); //end get all objects in the inventory
 
 //static folder
 app.use(express.static('public'));

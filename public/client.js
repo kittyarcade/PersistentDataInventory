@@ -28,7 +28,7 @@ $(document).ready(function(){
       type: 'POST',
       data: newItem,
       url: '/addItem',
-      success: function(resposne){
+      success: function(response){
         console.log('Back from post: ', response);
       } //end success
     }); //end ajax call
