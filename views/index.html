@@ -8,6 +8,8 @@
   </head>
   <body>
     <h1>8-Bit Inventory Launchpad</h1>
+    <div id ='create'>
+      <h3>Create an item</h3>
     <input type="text" id='nameIn' placeholder ='name of item here...'>
     <select id="colorIn" name="colors">
       <option value='red'>Red</option>
@@ -23,5 +25,24 @@
       <option value="large">Large</option>
     </select>
     <button type="submit" id='submit'>Submit</button>
+  </div>
+  <div id='search'>
+    <h3>Search for an item</h3>
+    <select id="searchColorIn" name="colors">
+      <option value='red'>Red</option>
+      <option value="orange">Orange</option>
+      <option value="green">Green</option>
+      <option value="mermaid treasure">Mermaid Treasure</option>
+      <option value="blue">Blue</option>
+      <option value="purple">Purple</option>
+    </select>
+    <select id="searchSizeIn" name="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+    <button id='searchInv'>Search</button>
+    <h3>Search Results</h3>
+    <div id= 'outputDiv'></div>
   </body>
 </html>

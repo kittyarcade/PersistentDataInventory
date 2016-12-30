@@ -3,7 +3,7 @@
 // var colors = ['red', 'orange', 'green', 'mermaid treasure', 'blue', 'purple'];
 
 //global array of items in inventory
-// var items = [];
+var items = [];
 
 $(document).ready(function(){
   console.log('woof');
@@ -49,12 +49,17 @@ $(document).ready(function(){
   //   ////// TODO: display matches
   // }; // end findObject
   //
-  // var getObjects = function(){
-  //   console.log( 'in getObjects');
-  //   // populate the items array
-  //   ////// Todo: replace the stuff in this function with getting items from the database ////////
-  //   ////// hint: make a get call to the getInventory and use it's response data to fill the items array ////////
-  // }; // end getObjects
+  var getObjects = function(){
+    console.log( 'in getObjects');
+    $.ajax({
+      type: 'GET',
+      url: '/getItem',
+      success: function(response){
+        items.push(response);
+      }
+    }); //end ajax call
+    ////// hint: make a get call to the getInventory and use it's response data to fill the items array ////////
+  }; // end getObjects
   //
   // // get objects when doc is ready
   // getObjects();
