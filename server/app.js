@@ -34,10 +34,26 @@ app.post('/addItem', urlEncodedParser, function(req, res){
   });
 }); //end add new item to the inventory
 
-// //get all objects in the inventory
-// app.get('/getInventory', function(req, res){
-//   console.log('getInventory route hit');
-// }); //end get all objects in the inventory
+// get all items from inventory
+app.get('/getItem', function(req, res){
+  console.log('getInventory route hit');
+  pg.connection(connectionString, function(err, client, done){
+    if(err){
+      log(err);
+    } else {
+      var query = client.query('SELECT * FROM items');
+      var itemsArray = [];
+      query.on('row', function(row){
+        itemsArray.push(row);
+        console.log('items in get: ', itemsArray);
+      });
+      query.on('end', function(){
+        done();
+        res.send(itemsArray);
+      });
+    }
+  });
+}); //end get all objects in the inventory
 
 //static folder
 app.use(express.static('public'));
