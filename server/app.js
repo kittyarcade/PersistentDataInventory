@@ -37,7 +37,7 @@ app.post('/addItem', urlEncodedParser, function(req, res){
 // get all items from inventory
 app.get('/getItem', function(req, res){
   console.log('getInventory route hit');
-  pg.connection(connectionString, function(err, client, done){
+  pg.connect(connectionString, function(err, client, done){
     if(err){
       log(err);
     } else {
