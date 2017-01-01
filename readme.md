@@ -3,13 +3,13 @@
 Updating the earlier "Do You Have This?" project with persistent data.
 
 ##To-DO:
-* [] link all things
+* [x] link all things
 * [x] set up db
 * [x] npm install stuff
 * [x] set up HTML
 * [] logic
 * [x] set up server
-* [] connect server to db
+* [x] connect server to db
 
 
 ##Technologies
