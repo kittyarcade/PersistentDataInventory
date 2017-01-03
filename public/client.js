@@ -3,7 +3,7 @@
 // var colors = ['red', 'orange', 'green', 'mermaid treasure', 'blue', 'purple'];
 
 //global array of items in inventory
-var items = [];
+// var items = [];
 
 $(document).ready(function(){
   console.log('woof');
@@ -40,14 +40,15 @@ $(document).ready(function(){
     }); //end ajax call
   };//end addObject
 
-  var findObject = function(){
+  var findObject = function(items){
     // console.log( 'in findObject. Looking for:', colorCheck, sizeCheck );
     // array of matches
+    console.log('findObject items: ', items.length);
     var matches = [];
     for ( var i = 0; i < items.length; i++ ) {
-      if( items[0][i].color == $('#searchColorIn').val() && items[0][i].size == $('#searchSizeIn').val()){
+      if( items[i].color == $('#searchColorIn').val() && items[i].size == $('#searchSizeIn').val()){
         // match, add to array
-        matches.push( items[0][i] );
+        matches.push( items[i] );
       } // end if
     } // end for
     console.log( 'matches:', matches );
@@ -60,8 +61,8 @@ $(document).ready(function(){
       type: 'GET',
       url: '/getItem',
       success: function(response){
-        items.push(response);
-        findObject(items);
+        console.log('get response: ', response);
+        findObject(response);
       }
     }); //end ajax call
   }; // end getObjects
