@@ -49,6 +49,8 @@ $(document).ready(function(){
       if( items[i].color == $('#searchColorIn').val() && items[i].size == $('#searchSizeIn').val()){
         // match, add to array
         matches.push( items[i] );
+        //display results
+         $('#outputDiv').append('<p>' +' ' +items[i].name + ' ' + items[i].size + ' ' + items[i].color + '</p>');
       } // end if
     } // end for
     console.log( 'matches:', matches );
