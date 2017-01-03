@@ -19,6 +19,7 @@ $(document).ready(function(){
   $('#searchInv').on('click', function(){
     console.log('search clicked');
     getObjects();
+    findObject();
   });
 
   var addObject = function(){
@@ -44,14 +45,16 @@ $(document).ready(function(){
     // console.log( 'in findObject. Looking for:', colorCheck, sizeCheck );
     // array of matches
     var matches = [];
+    $('#outputDiv').html(' ');
     for ( var i = 0; i < items.length; i++ ) {
-      if( items[0][i].color == $('#searchColorIn').val() && items[0][i].size == $('#searchSizeIn').val()){
+      if( items[i].color == $('#searchColorIn').val() && items[i].size == $('#searchSizeIn').val()){
         // match, add to array
-        matches.push( items[0][i] );
+        matches.push( items[i] );
+        //now display results
+        $('#outputDiv').append('<p>' +' ' +items[i].name + ' ' + items[i].size + ' ' + items[i].color + '</p>');
       } // end if
     } // end for
     console.log( 'matches:', matches );
-    //////todo: display matches
   }; // end findObject
 
   var getObjects = function(){
@@ -61,22 +64,13 @@ $(document).ready(function(){
       url: '/getItem',
       success: function(response){
         items.push(response);
-        findObject(items);
+        console.log('these are my items: ', items);
       }
     }); //end ajax call
+
   }; // end getObjects
-  //
-  // // get objects when doc is ready
-  // getObjects();
-  // // the below are tests to show what is returned when running findObject
-  // addObject( 'blue', 'blueberry', 'small' );
-  // findObject( 'blue', 'small' );
-  // findObject( 'blue', 'large' );
 
 
-
-
-
-
+getObjects();
 
 }); //end document ready
